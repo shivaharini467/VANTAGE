@@ -1,0 +1,59 @@
+.smoke-container {
+  position: relative;
+  height: 100vh;
+  /* Match app theme background */
+  background: hsl(225 25% 6%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Animated gradient smoke effect (when video is not available) */
+.smoke-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 30% 40%, rgba(100, 200, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 70% 60%, rgba(100, 200, 255, 0.06) 0%, transparent 50%);
+  animation: smokeFlow 8s ease-in-out infinite;
+  z-index: 1;
+  pointer-events: none;
+}
+
+@keyframes smokeFlow {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* Smoke Video */
+.smoke-video {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  opacity: 0.85;
+  z-index: 4;
+}
+
+.black-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.25);
+  z-index: 2;
+}
+
+/* Text Content */
+.content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+}
